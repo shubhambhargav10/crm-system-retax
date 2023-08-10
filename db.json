@@ -239,6 +239,56 @@
       "gender": "Male",
       "address": "A-204, Sai Shrushti Complex Amli",
       "id": 24
+    },
+    {
+      "firstName": "Shubham",
+      "lastName": "Bhargaw",
+      "email": "shubhambhargav10@gmail.com",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "gender": "Male",
+      "address": "A-204, Sai Shrushti Complex Amli",
+      "id": 25
+    },
+    {
+      "firstName": "Shubham",
+      "lastName": "Bhargaw",
+      "email": "shubhambhargav10@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "gender": "Male",
+      "address": "A-204, Sai Shrushti Complex Amli",
+      "id": 26
+    },
+    {
+      "firstName": "Shubham",
+      "lastName": "Bhargaw",
+      "email": "shubhambhargav10@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "gender": "Male",
+      "address": "A-204, Sai Shrushti Complex Amli",
+      "id": 27
+    },
+    {
+      "firstName": "Shubham",
+      "lastName": "Bhargaw",
+      "email": "shubhambhargav10@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "gender": "Male",
+      "address": "A-204, Sai Shrushti Complex Amli",
+      "id": 28
+    },
+    {
+      "firstName": "Shubham",
+      "lastName": "Bhargaw",
+      "email": "shubhambhargav10@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "gender": "Male",
+      "address": "A-204, Sai Shrushti Complex Amli",
+      "id": 29
     }
   ]
 }
