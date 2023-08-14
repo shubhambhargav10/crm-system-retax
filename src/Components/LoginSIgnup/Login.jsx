@@ -69,14 +69,14 @@ export const Login = () => {
     }
     else{
     axios
-      .get('http://localhost:8060/users') 
+      .post(`mongodb+srv://shubhambhargav10:Shubham10091995@cluster0.tcuh0z6.mongodb.net/?retryWrites=true&w=majority`) 
       .then((response) => {
         const users = response.data;
 
-        const matchFound = users.find((user) => user.email === email && user.password === password);
+        //56const matchFound = users.find((user) => user.email === email && user.password === password);
         const partialMatchFound = users.find((user) => user.email === email || user.password === password);
 
-        if (matchFound) {
+        if (response.status===200) {
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -87,12 +87,14 @@ export const Login = () => {
           setIsAuth(true)
           localStorage.setItem('email',email)
           navigate('/');
-        } else if (partialMatchFound) {
+        } 
+        else if (response.status===400) {
           Swal.fire({
             icon: 'warning',
             title: 'Invalid email or password',
           });
-        } else {
+        } 
+        else {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
