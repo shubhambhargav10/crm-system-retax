@@ -331,14 +331,14 @@ function Employee() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   const filteredList = sort.filter((employee) =>
-  //     employee.name.toLowerCase().includes(searchText.toLowerCase()) ||
-  //     employee.phoneNumber.toLowerCase().includes(searchText.toLowerCase()) ||
-  //     employee.email.toLowerCase().includes(searchText.toLowerCase())
-  //   );
-  //   setEmployeeData(filteredList);
-  // }, [searchText, sort]);
+  useEffect(() => {
+    const filteredList = sort.filter((employee) =>
+      employee.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      employee.phoneNumber.toLowerCase().includes(searchText.toLowerCase()) ||
+      employee.email.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setEmployeeData(filteredList);
+  }, [searchText, sort]);
 
   return (
     <Box style={{ margin: "10px", padding: "10px" }}>
@@ -436,13 +436,13 @@ function Employee() {
             <Tbody>
               {employeeData.map((employee) => {
                 return (
-                  <Tr key={employee.id} alignItems={"center"} textAlign={"left"}>
+                  <Tr key={employee._id} alignItems={"center"} textAlign={"left"}>
                     <Td>
                       <input type="checkbox" />
                     </Td>
                     <Td marginLeft="-50px">
                       <Flex style={{ alignItems: "center" }}>
-                        <Link to={`/employee/${employee.id}`}>
+                        <Link to={`/client/${employee._id}`}>
                           <img
                             src={employee.img}
                             alt="profile img"
@@ -454,7 +454,7 @@ function Employee() {
                           />
                         </Link>
                         <Link
-                          to={`/employee/${employee.id}`}
+                          to={`/client/${employee.id}`}
                           style={{ fontSize: "14px" }}
                         >
                           {employee.name}
@@ -486,7 +486,7 @@ function Employee() {
                     </Td>
                     <Td textAlign="center" fontSize={"14px"}>
                       <Link
-                        to={`/employee/${employee.id}`}
+                        to={`/client/${employee._id}`}
                         style={{ marginLeft: "-50px" }}
                       >
                         {employee.email}

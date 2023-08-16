@@ -35,8 +35,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    const token = localStorage.getItem('token'); // Retrieve the token from local storage
-  
+    const token = localStorage.getItem('token'); 
     if (!token) {
       console.error('User not authenticated.');
       return;
