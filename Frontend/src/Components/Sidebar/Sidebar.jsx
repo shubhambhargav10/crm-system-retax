@@ -17,7 +17,7 @@ const Sidebar = () => {
   const filteredLinks = [
     { path: '/', label: 'Dashboard', icon: RxDashboard },
     { path: '/calendar', label: 'Calendar', icon: FaCalendar },
-    { path: '/employee', label: 'Employees', icon: FaUserFriends },
+    { path: '/client', label: 'Employees', icon: FaUserFriends },
     { path: '/customers', label: 'Customers', icon: FaUser },
     { path: '/cases', label: 'Cases', icon: FaBriefcase },
     { path: '/leads', label: 'Leads', icon: FaChartBar },
