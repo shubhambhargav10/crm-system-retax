@@ -20,6 +20,11 @@ app.use(cors({
    
     next();
   });
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-2bue.vercel.app/client/add');
+   
+    next();
+  });
 app.use(express.json());
 
 app.get('/', async(req, res) =>{

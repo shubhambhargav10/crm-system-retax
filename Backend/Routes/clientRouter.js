@@ -51,7 +51,11 @@ clientRouter.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
   next();
 });
-
+clientRouter.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-2bue.vercel.app/client/add');
+   
+    next();
+  });
 
 clientRouter.get('/', async (req, res) => {
   try {
