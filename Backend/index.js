@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', async(req, res) =>{
-    const allUsers = UserModel.find();
+    const allUsers = await UserModel.find();
     try {
         res.status(200).json(allUsers)
     }
