@@ -34,17 +34,31 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    const token = localStorage.getItem('token'); // Retrieve the token from local storage
+  
+    if (!token) {
+      console.error('User not authenticated.');
+      return;
+    }
+  
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, 
+      },
+    };
+  
     axios
-      .post("crm-system-retax.vercel.app/client/add", formData)
+      .post("https://crm-system-retax.vercel.app/client/add", formData, config)
       .then((response) => {
-        //setFormData(initialState);
         showToast();
-        navigate('/employee')
+        navigate('/employee');
       })
       .catch((error) => {
         console.error("Error adding employee:", error);
       });
   };
+  
 
   const showToast = () => {
     toast({

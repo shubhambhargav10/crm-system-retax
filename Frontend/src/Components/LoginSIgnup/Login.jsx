@@ -61,55 +61,42 @@ export const Login = () => {
   };
 
   const handleLogin = () => {
-    if(email===''||password===''){
+    if (email === '' || password === '') {
       Swal.fire({
         icon: 'warning',
         title: 'All inputs must be filled',
-      })
-    }
-    else{
-    axios
-      .get('crm-system-retax.vercel.app/') 
-      .then((response) => {
-        const users = response.data;
-
-        const matchFound = users.find((user) => user.email === email && user.password === password);
-        const partialMatchFound = users.find((user) => user.email === email || user.password === password);
-
-        if (matchFound) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Login Successful',
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          setIsAuth(true)
-          localStorage.setItem('email',email)
-          navigate('/');
-        } else if (partialMatchFound) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Invalid email or password',
-          });
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            showConfirmButton: false,
-            text: 'This account does not exist!',
-            footer: `<a href="" id="createButton" style="color: white; text-decoration: none; background-color: teal; padding: 10px; border-radius: 5px;">Create Now</a>`,
-            didOpen: () => {
-              const createButton = document.getElementById('createButton');
-              createButton.addEventListener('click', handleCreateButtonClick);
-            },
-          });
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
       });
-  }}
+    } else {
+      axios
+        .post('https://crm-system-retax.vercel.app/login', {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          if (response.data.token) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Login Successful',
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            setIsAuth(true);
+            localStorage.setItem('email', email);
+            localStorage.setItem('token', response.data.token); // Save the JWT token to local storage
+            navigate('/');
+          } else {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Invalid email or password',
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  };
 
   if(isAuth) {
     return <LoggedIn/>
