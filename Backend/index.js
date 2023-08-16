@@ -1,9 +1,11 @@
 const express = require ('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+require("dotenv").config();
 
 const {connection} = require('./config/db');
-const {UserModel} = require('./models/UserModel')
+const {UserModel} = require('./models/UserModel');
+const { authentication } = require('./middlewares/authentication');
 
 const app = express();
 app.use(express.json());
@@ -27,7 +29,7 @@ app.post('/login', async(req, res) =>{
             if(err) return res.status(500).json('erro in bcrypt')
             if(result)
             {
-                var token = jwt.sign({ user: user }, 'shhh');
+                var token = jwt.sign({ user: user }, process.env.SECRET_KEY);
                 res.status(200).json({token: token, msg:"login successful"})
             }
             else {
@@ -79,6 +81,8 @@ app.post('/signup', async (req, res)=>{
         res.status(500).json(`internal server error due to  ${err.message}`)
     }
 })
+
+app.use('/client',authentication, clientRouter)
 
 app.listen(8000, async ()=>{
     try {
