@@ -47,10 +47,10 @@ clientRouter.use(cors({
 clientRouter.use(express.json());
 
 
-// clientRouter.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
-//   next();
-// });
+clientRouter.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
+  next();
+});
 
 
 clientRouter.get('/', async (req, res) => {
