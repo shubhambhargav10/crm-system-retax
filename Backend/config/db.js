@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const dbURI = process.env.MONGODB_URL;
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://shubhambhargav10:Shubham10091995@cluster0.tcuh0z6.mongodb.net/crm?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 
