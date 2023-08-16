@@ -16,7 +16,7 @@ app.use(cors({
     credentials: true,
   }));
 //   app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
+//     res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-2bue.vercel.app');
    
 //     next();
 //   });

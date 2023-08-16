@@ -56,7 +56,7 @@ clientRouter.use(express.json());
 clientRouter.get('/', async (req, res) => {
   try {
     const allClients = await ClientModel.find();
-    res.status(200).json({"allClients": allClients});
+    res.status(200).json(allClients);
   } catch (err) {
     res.status(500).json('internal server error ', err);
   }
