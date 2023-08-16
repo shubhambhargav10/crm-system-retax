@@ -18,8 +18,9 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', async(req, res) =>{
+    const allUsers = UserModel.find();
     try {
-        res.status(200).json('homepage')
+        res.status(200).json(allUsers)
     }
     catch (err) {
         res.status(500).json('error', err)

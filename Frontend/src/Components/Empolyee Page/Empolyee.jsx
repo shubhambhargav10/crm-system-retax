@@ -64,7 +64,7 @@ function Employee() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3003/employeesListData")
+      .get("crm-system-retax.vercel.app/client")
       .then((response) => {
         setSort(response.data);
         setEmployeeData(response.data);

@@ -1,122 +1,14 @@
-// import React, { useState } from "react";
-// import { Input, Container, Center, Box, Button, Heading, Radio, RadioGroup, Stack } from '@chakra-ui/react';
-// //import { useDispatch, useSelector } from "react-redux";
-// //import { addUser } from "../../Redux/Login-Signup/action";
-// import { useNavigate } from 'react-router-dom';
-// import Swal from 'sweetalert2';
-// import './sign.css';
-
-// export const Signup = () => {
-//  // const dispatch = useDispatch();
-
-//   const [user, setUser] = useState({
-//     firstName: '',
-//     lastName: '',
-//     email: '',
-//     password: '',
-//     confirmPassword: '',
-//     gender: '',
-//     address: ''
-//   });
-//   const [userArray, setUserArray] = useState([]);
-
-//   const navigate = useNavigate();
-
-//   const handleInputChange = (e) => {
-//     const name = e.target.name;
-//     const value = e.target.value;
-//     setUser((prevUser) => {
-//       return { ...prevUser, [name]: value };
-//     });
-//   };
-
-//   const handleSignUp = () => {
-//     if (
-//       user.firstName !== '' &&
-//       user.lastName !== '' &&
-//       user.email !== '' &&
-//       user.password !== '' &&
-//       user.confirmPassword !== '' &&
-//       user.gender !== ''
-//     ) {
-//       if (user.password !== user.confirmPassword) {
-//         Swal.fire({
-//           icon: 'error',
-//           title: 'Oops...',
-//           text: 'Passwords do not match!',
-//           customClass: {
-//             confirmButton: 'teal-button',
-//           },
-//         });
-//       } else {
-//         fetch('http://localhost:8060/users')
-//           .then((res) => res.json())
-//           .then((data) => {
-//             setUserArray(data);
-//             const matchFound = userArray.find((ele)=>{
-//                 console.log('ele',ele);
-//                 console.log('userObj',user)
-//                 console.log('emailUse',user.email)
-//             })
-
-//             if (matchFound) {
-//               Swal.fire({
-//                 icon: 'warning',
-//                 title: 'This email already exists',
-//               });
-//             } else {
-//               fetch('http://localhost:8060/users', {
-//                 method: 'POST',
-//                 headers: {
-//                   'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(user),
-//               })
-//                 .then((response) => {
-//                   if (!response.ok) {
-//                     throw new Error('Signup request failed');
-//                   }
-//                   return response.json();
-//                 })
-//                 .then((data) => {
-//                   Swal.fire({
-//                     icon: 'success',
-//                     title: 'Account Created Successfully',
-//                   });
-//                 //   dispatch(addUser(user));
-//                   localStorage.setItem('allUsers', JSON.stringify(user));
-//                   navigate('/login');
-//                 })
-//                 .catch((error) => {
-//                   Swal.fire({
-//                     icon: 'error',
-//                     title: 'Oops...!',
-//                     text: 'Signup request failed',
-//                   });
-//                   console.error(error);
-//                 });
-//             }
-//           });
-//       }
-//     } else {
-//       Swal.fire({
-//         icon: 'warning',
-//         title: 'Enter all fields',
-//       });
-//     }
-//   };
-
-  //const storeData = useSelector((store) => store);
-
-//   useEffect(() => {
-//     console.log("sd",storeData);
-//   }, [storeData]);
 import React, { useState } from "react";
 import { Input, Container, Center, Box, Button, Heading, Radio, RadioGroup, Stack } from '@chakra-ui/react';
+//import { useDispatch, useSelector } from "react-redux";
+//import { addUser } from "../../Redux/Login-Signup/action";
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './sign.css';
 
 export const Signup = () => {
+ // const dispatch = useDispatch();
+
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
@@ -126,6 +18,9 @@ export const Signup = () => {
     gender: '',
     address: ''
   });
+  const [userArray, setUserArray] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -154,55 +49,53 @@ export const Signup = () => {
           },
         });
       } else {
-        fetch('http://localhost:8000/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(user),
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Signup request failed');
-            }
-            return response.json();
-          })
+        fetch('crm-system-retax.vercel.app/')
+          .then((res) => res.json())
           .then((data) => {
-            if (response.status === 200) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Account Created Successfully',
-              });
-  
-              setUser({
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: '',
-                confirmPassword: '',
-                gender: '',
-                address: '',
-              });
-            } else if (response.status === 400) {
+            setUserArray(data);
+            const matchFound = userArray.find((ele)=>{
+                console.log('ele',ele);
+                console.log('userObj',user)
+                console.log('emailUse',user.email)
+            })
+
+            if (matchFound) {
               Swal.fire({
                 icon: 'warning',
                 title: 'This email already exists',
               });
             } else {
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...!',
-                text: 'Signup request failed',
-              });
+              fetch('crm-system-retax.vercel.app/signup', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+              })
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error('Signup request failed');
+                  }
+                  return response.json();
+                })
+                .then((data) => {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Account Created Successfully',
+                  });
+                //   dispatch(addUser(user));
+                  localStorage.setItem('allUsers', JSON.stringify(user));
+                  navigate('/login');
+                })
+                .catch((error) => {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...!',
+                    text: 'Signup request failed',
+                  });
+                  console.error(error);
+                });
             }
-          })
-          .catch((error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...!',
-              text: 'Signup request failed',
-            });
-            console.error(error);
           });
       }
     } else {
@@ -212,7 +105,13 @@ export const Signup = () => {
       });
     }
   };
-  
+
+  //const storeData = useSelector((store) => store);
+
+//   useEffect(() => {
+//     console.log("sd",storeData);
+//   }, [storeData]);
+
   return (
     <Box my="100px">
       <Center>

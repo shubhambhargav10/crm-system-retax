@@ -25,7 +25,7 @@ function EmployeeDetails() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3003/employeesListData")
+      .get("crm-system-retax.vercel.app/client")
       .then((response) => {
         const data = response.data;
         const employee = data.find((emp) => emp.id === parseInt(emp_id));

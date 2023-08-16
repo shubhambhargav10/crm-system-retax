@@ -69,14 +69,14 @@ export const Login = () => {
     }
     else{
     axios
-      .post(`mongodb+srv://shubhambhargav10:Shubham10091995@cluster0.tcuh0z6.mongodb.net/?retryWrites=true&w=majority`) 
+      .get('crm-system-retax.vercel.app/') 
       .then((response) => {
         const users = response.data;
 
-        //56const matchFound = users.find((user) => user.email === email && user.password === password);
+        const matchFound = users.find((user) => user.email === email && user.password === password);
         const partialMatchFound = users.find((user) => user.email === email || user.password === password);
 
-        if (response.status===200) {
+        if (matchFound) {
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -87,14 +87,12 @@ export const Login = () => {
           setIsAuth(true)
           localStorage.setItem('email',email)
           navigate('/');
-        } 
-        else if (response.status===400) {
+        } else if (partialMatchFound) {
           Swal.fire({
             icon: 'warning',
             title: 'Invalid email or password',
           });
-        } 
-        else {
+        } else {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
