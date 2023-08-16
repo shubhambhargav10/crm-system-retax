@@ -52,7 +52,7 @@ function Form() {
       .post("https://crm-system-retax.vercel.app/client/add", formData, config)
       .then((response) => {
         showToast();
-        navigate('/employee');
+        navigate('/client');
       })
       .catch((error) => {
         console.error("Error adding employee:", error);
