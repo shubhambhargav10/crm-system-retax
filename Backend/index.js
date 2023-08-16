@@ -2,6 +2,7 @@ const express = require ('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 require("dotenv").config();
+const cors = require('cors');
 
 const {connection} = require('./config/db');
 const {UserModel} = require('./models/UserModel');
@@ -9,6 +10,11 @@ const { authentication } = require('./middlewares/authentication');
 const { clientRouter } = require('./Routes/clientRouter');
 
 const app = express();
+app.use(cors({
+    origin: '*', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
 app.use(express.json());
 
 app.get('/', async(req, res) =>{
