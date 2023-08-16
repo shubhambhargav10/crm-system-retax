@@ -36,7 +36,7 @@ app.post('/login', async(req, res) =>{
             if(err) return res.status(500).json('erro in bcrypt')
             if(result)
             {
-                var token = jwt.sign({ user: user }, process.env.SECRET_KEY);
+                var token = jwt.sign({ user: user }, 'shhhh...koi hai!');
                 res.status(200).json({token: token, msg:"login successful"})
             }
             else {
