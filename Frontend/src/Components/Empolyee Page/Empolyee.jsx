@@ -315,8 +315,9 @@ function Employee() {
 
   useEffect(() => {
     axios
-      .get("/client") // Use relative URL
+      .get("https://crm-system-retax.vercel.app/client") // Use relative URL
       .then((response) => {
+        console.log("res",response)
         setSort(response.data);
         setEmployeeData(response.data);
       })
