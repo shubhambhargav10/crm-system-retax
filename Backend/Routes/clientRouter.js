@@ -34,7 +34,7 @@
 const { Router } = require('express');
 const express = require('express');
 const { ClientModel } = require('../models/ClientModels');
-const { authentication } = require('../middlewares/authentication'); // Import the authentication middleware
+//const { authentication } = require('../middlewares/authentication'); // Import the authentication middleware
 
 const clientRouter = Router();
 
@@ -50,14 +50,14 @@ clientRouter.use((req, res, next) => {
 clientRouter.get('/', async (req, res) => {
   try {
     const allClients = await ClientModel.find();
-    res.status(200).json(allClients);
+    res.status(200).json({"allClients": allClients});
   } catch (err) {
     res.status(500).json('internal server error ', err);
   }
 });
 
 
-clientRouter.post('/add', authentication, async (req, res) => {
+clientRouter.post('/add', async (req, res) => {
   const clientDetails = req.body;
   try {
     const clientToSave = new ClientModel(clientDetails);

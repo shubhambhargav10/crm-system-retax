@@ -331,14 +331,14 @@ function Employee() {
       });
   }, []);
 
-  useEffect(() => {
-    const filteredList = sort.filter((employee) =>
-      employee.name.toLowerCase().includes(searchText.toLowerCase()) ||
-      employee.phoneNumber.toLowerCase().includes(searchText.toLowerCase()) ||
-      employee.email.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setEmployeeData(filteredList);
-  }, [searchText, sort]);
+  // useEffect(() => {
+  //   const filteredList = sort.filter((employee) =>
+  //     employee.name.toLowerCase().includes(searchText.toLowerCase()) ||
+  //     employee.phoneNumber.toLowerCase().includes(searchText.toLowerCase()) ||
+  //     employee.email.toLowerCase().includes(searchText.toLowerCase())
+  //   );
+  //   setEmployeeData(filteredList);
+  // }, [searchText, sort]);
 
   return (
     <Box style={{ margin: "10px", padding: "10px" }}>
