@@ -34,17 +34,23 @@
 const { Router } = require('express');
 const express = require('express');
 const { ClientModel } = require('../models/ClientModels');
+const cors = require('cors');
 //const { authentication } = require('../middlewares/authentication'); // Import the authentication middleware
 
 const clientRouter = Router();
 
+clientRouter.use(cors({
+    origin: '*', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
 clientRouter.use(express.json());
 
-clientRouter.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
- 
-  next();
-});
+
+// clientRouter.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
+//   next();
+// });
 
 
 clientRouter.get('/', async (req, res) => {
