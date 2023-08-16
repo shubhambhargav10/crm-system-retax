@@ -6,6 +6,7 @@ require("dotenv").config();
 const {connection} = require('./config/db');
 const {UserModel} = require('./models/UserModel');
 const { authentication } = require('./middlewares/authentication');
+const { clientRouter } = require('./Routes/clientRouter');
 
 const app = express();
 app.use(express.json());

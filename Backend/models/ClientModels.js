@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const clientSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    required: true
-  },
   img: {
     type: String,
     required: true
@@ -13,7 +9,7 @@ const clientSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  positions: {
+  position: {
     type: String,
     required: true
   },
