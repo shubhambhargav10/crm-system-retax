@@ -14,7 +14,7 @@ const DashboardTop = () => {
         <Spacer />
         <ButtonGroup isAttached variant="outline">
           <IconButton icon={<AddIcon />} colorScheme="blue" />
-          <Button onClick={()=>navigate('/addempolyee')} colorScheme="blue">Add an employee</Button>
+          <Button onClick={()=>navigate('/client/add')} colorScheme="blue">Add an employee</Button>
         </ButtonGroup>
       </Flex>
     </Box>

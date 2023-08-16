@@ -347,7 +347,7 @@ function Employee() {
         <Spacer />
         <Button
           as={Link}
-          to="/addemployee"
+          to="/client/add"
           colorScheme="purple"
           size="md"
           variant="outline"
