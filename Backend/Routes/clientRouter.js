@@ -41,7 +41,7 @@ const clientRouter = Router();
 clientRouter.use(express.json());
 
 clientRouter.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-2bue.vercel.app');
+  res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
  
   next();
 });
