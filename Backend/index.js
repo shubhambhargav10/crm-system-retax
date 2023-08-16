@@ -15,6 +15,11 @@ app.use(cors({
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   }));
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://crm-system-retax-d192.vercel.app');
+   
+    next();
+  });
 app.use(express.json());
 
 app.get('/', async(req, res) =>{
