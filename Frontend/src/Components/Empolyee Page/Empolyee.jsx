@@ -46,7 +46,7 @@
 //     const sortBy = event.target.textContent.toLowerCase();
 //     if (sortBy === "position") {
 //       const sortedList = [...employeeData].sort((a, b) =>
-//         a.positions.localeCompare(b.positions)
+//         a.position.localeCompare(b.position)
 //       );
 //       setEmployeeData(sortedList);
 //     } else if (sortBy === "department") {
@@ -205,7 +205,7 @@
       //                   </Link>
       //                 </Flex>
       //               </Td>
-      //               <Td fontSize={"14px"}>{employee.positions}</Td>
+      //               <Td fontSize={"14px"}>{employee.position}</Td>
       //               <Td marginLeft={"-100px"} fontSize={"14px"}>
       //                 {employee.department}
       //               </Td>
@@ -297,7 +297,7 @@ function Employee() {
     const sortBy = event.target.textContent.toLowerCase();
     if (sortBy === "position") {
       const sortedList = [...employeeData].sort((a, b) =>
-        a.positions.localeCompare(b.positions)
+        a.position.localeCompare(b.position)
       );
       setEmployeeData(sortedList);
     } else if (sortBy === "department") {
@@ -461,7 +461,7 @@ function Employee() {
                         </Link>
                       </Flex>
                     </Td>
-                    <Td fontSize={"14px"}>{employee.positions}</Td>
+                    <Td fontSize={"14px"}>{employee.position}</Td>
                     <Td marginLeft={"-100px"} fontSize={"14px"}>
                       {employee.department}
                     </Td>
