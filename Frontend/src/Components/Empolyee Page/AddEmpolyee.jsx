@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
-  positions: "",
+  position: "",
   department: "",
   status: "",
   phoneNumber: "",
@@ -89,8 +89,8 @@ function Form() {
         <FormControl isRequired>
           <FormLabel>Position</FormLabel>
           <Select
-            name="positions"
-            value={formData.positions}
+            name="position"
+            value={formData.position}
             onChange={handleChange}
           >
             <option value="">Select a position</option>
