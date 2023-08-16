@@ -314,8 +314,13 @@ function Employee() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
-      .get("https://crm-system-retax.vercel.app/client") // Use relative URL
+      .get("https://crm-system-retax.vercel.app/client",{
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    }) 
       .then((response) => {
         console.log("res",response)
         setSort(response.data);
