@@ -1,5 +1,5 @@
-import { Box, Grid, Heading, IconButton, useDisclosure } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { Flex,Button,Box, Grid, Heading, IconButton, useColorMode, useDisclosure } from '@chakra-ui/react';
+import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { motion } from "framer-motion";
 import './App.css';
 import Sidebar from './Components/Sidebar/Sidebar';
@@ -7,9 +7,10 @@ import { AllRoutes } from './Components/AllRoutes/AllRoutes';
 import Topbar from './Components/Topbar/Topbar';
 import Footer from './Components/Footer/Footer'
 
+
 function App() {
   const { isOpen, onToggle } = useDisclosure();
- 
+  const { colorMode, toggleColorMode } = useColorMode();
   const handleSidebarToggle = () => {
     onToggle();
   };
@@ -36,6 +37,14 @@ function App() {
           ))}
         </Heading>
       </motion.div>
+      <Flex justify="flex-end" mr={4} mt={4}>
+        <Button
+          onClick={toggleColorMode}
+          leftIcon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        >
+          {colorMode === 'light' ? 'Dark Mode' : 'Light Mode'}
+        </Button>
+      </Flex>
       <Box mb={2}>
         <Topbar />
       </Box>
