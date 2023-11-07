@@ -83,7 +83,7 @@ export const Login = () => {
             });
             setIsAuth(true);
             localStorage.setItem('email', email);
-            localStorage.setItem('token', response.data.token); // Save the JWT token to local storage
+            localStorage.setItem('token', response.data.token); 
             navigate('/');
           } else {
             Swal.fire({
