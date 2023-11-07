@@ -23,7 +23,7 @@ const initialState = {
 };
 
 function Form() {
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState([]);
   const navigate = useNavigate();
   const toast = useToast();
 

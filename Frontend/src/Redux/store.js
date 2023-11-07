@@ -1,6 +1,12 @@
-import { legacy_createStore as createStore } from "redux";
-import { sideBarReducer } from "./sideBarReducer";
+import { combineReducers, legacy_createStore as createStore } from "redux";
+import keyIndicatorsReducer from './keyIndicatorReducer'
+import {sideBarReducer} from "./sideBarReducer";
 
-export const store = createStore(sideBarReducer)
+const rootReducer = combineReducers({
+  keyIndicators: keyIndicatorsReducer,
+  sideBar: sideBarReducer,
+});
 
-export default store
+const store = createStore(rootReducer);
+
+export default store;
